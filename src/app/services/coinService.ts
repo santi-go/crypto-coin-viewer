@@ -1,4 +1,5 @@
 import { Coin, CoinDetails } from '../interfaces/coinViewer.interface';
+import { SearchResult } from '../interfaces/searchResult.interface';
 import { COIN_GECKO_API_URL, OPTIONS } from './coinService.const';
 
 async function handleApiRequest<T>(url: string): Promise<T> {
@@ -15,6 +16,11 @@ export async function fetchCoins(): Promise<Coin[]> {
 }
 
 export async function fetchCoinById(id: string): Promise<CoinDetails> {
-    const url = `https://api.coingecko.com/api/v3/coins/${id}`;
+    const url = `${COIN_GECKO_API_URL}/coins/${id}`;
     return handleApiRequest<CoinDetails>(url);
+}
+
+export async function fetchByQuery(query: string): Promise<SearchResult> {
+  const url = `${COIN_GECKO_API_URL}/search?query=${query}`;
+  return handleApiRequest<SearchResult>(url);
 }
