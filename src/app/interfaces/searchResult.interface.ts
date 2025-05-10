@@ -1,7 +1,7 @@
 export interface SearchResult {
   coins: SearchResultCoin[];
-  exchanges: SearchResultExchange[];
-  icos: SearchResultIco[];
+  exchanges?: SearchResultExchange[];
+  icos?: SearchResultIco[];
   categories: SearchResultCategory[];
   nfts: SearchResultNft[];
 }
@@ -25,7 +25,7 @@ export interface SearchResultExchange {
 }
 
 export interface SearchResultIco {
-  // Currently empty, but can be extended if needed
+    id: string;
 }
 
 export interface SearchResultCategory {
